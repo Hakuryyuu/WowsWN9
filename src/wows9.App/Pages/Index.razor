@@ -1,0 +1,523 @@
+﻿@page "/"
+
+@using wows9.Cal
+
+<PageTitle>World of Warships Player Stats</PageTitle>
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="../img/sidebar-2.jpg">
+        <!--
+            Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+            Tip 2: you can also add an image using data-image tag
+        -->
+        <div class="logo">
+            <a class="simple-text logo-normal">
+                World of Weebships
+            </a>
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="nav-item active  ">
+                    <a class="nav-link" href="./">
+                        <i class="material-icons">dashboard</i>
+                        <p>Player Stats</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main-panel">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    @*<a class="navbar-brand" href="javascript:void(0)">Dashboard</a>*@
+                    @*  <form class="navbar-form">*@
+                    <div class="input-group no-border">
+                        <input type="text" class="form-control" placeholder="Search Player" @bind-value="PlayerName">
+                        <button type="submit" class="btn btn-default btn-round btn-just-icon" @onclick="QueryPlayer">
+                            <i class="material-icons">search</i>
+                            <div class="ripple-container"></div>
+                        </button>
+                    </div>
+                    @*</form>*@
+                </div>
+                <div class="collapse navbar-collapse justify-content-end">
+                    <h2>@PlayerName </h2>
+                    <h4> @SERVER</h4>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+        @if (PlayerQueried)
+        {
+            <div class="content">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">military_tech</i>
+                                </div>
+                                <p class="card-category">WINRATE</p>
+                                <h3 class="card-title">
+                                    @PlayerStats.WinrateOverall
+                                    <small>%</small>
+                                </h3>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-success card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">hotel_class</i>
+                                </div>
+                                <p class="card-category">WN9</p>
+                                <h3 class="card-title">900</h3>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-danger card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">local_fire_department</i>
+                                </div>
+                                <p class="card-category">Avg. Damage</p>
+                                <h3 class="card-title">@PlayerStats.AvgDmg</h3>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-info card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">history</i>
+                                </div>
+                                <p class="card-category">Last checked</p>
+                                <h3 class="card-title">@DateTime.Now</h3>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Warships</h4>
+                        <p class="card-category"> Detailed Ship statistics</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+
+                                    </th>
+                                <th>
+                                    Battles
+                                </th>
+                                <th>
+                                    Tier
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Type
+                                </th>
+                                <th>
+                                    WN9
+                                </th>
+                                <th>
+                                    Avg. XP
+                                </th>
+                                <th>
+                                    Avg. DMG
+                                </th>
+                                <th>
+                                    Avg. Frags
+                                </th>
+                                <th>
+                                    Avg. Spotted Ships
+                                </th>
+                                <th>
+                                    Avg. Spot Damage
+                                </th>
+                                </thead>
+                                <tbody>
+                                    @foreach (var Ship in PlayerStats.Warships)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <img src="@Ship.Img" alt="@Ship.Name">
+                                            </td>
+                                            <td>
+                                                @Ship.Battles
+                                            </td>
+                                            <td>
+                                                @Ship.Tier
+                                            </td>
+                                            <td>
+                                                @Ship.Name
+                                            </td>
+                                            <td>
+                                                @Ship.Type
+                                            </td>
+                                            <td class="text-primary">
+                                                900
+                                            </td>
+                                            <td>
+                                                @Ship.XP
+                                            </td>
+                                            <td>
+                                                @Ship.AvgDmg
+                                            </td>
+                                            <td>
+                                                @Ship.Frags
+                                            </td>
+                                            <td>
+                                                @Ship.Spotted
+                                            </td>
+                                            <td>
+                                                @Ship.SpotDmg
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @*          <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                        <div class="card-header card-header-primary">
+                        <h4 class="card-title">Employees Stats</h4>
+                        <p class="card-category">New employees on 15th September, 2016</p>
+                        </div>
+                        <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                        <thead class="text-warning">
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Salary</th>
+                        <th>Country</th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        <td>1</td>
+                        <td>Dakota Rice</td>
+                        <td>$36,738</td>
+                        <td>Niger</td>
+                        </tr>
+                        <tr>
+                        <td>2</td>
+                        <td>Minerva Hooper</td>
+                        <td>$23,789</td>
+                        <td>Curaçao</td>
+                        </tr>
+                        <tr>
+                        <td>3</td>
+                        <td>Sage Rodriguez</td>
+                        <td>$56,142</td>
+                        <td>Netherlands</td>
+                        </tr>
+                        <tr>
+                        <td>4</td>
+                        <td>Philip Chaney</td>
+                        <td>$38,735</td>
+                        <td>Korea, South</td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                        <div class="card-header card-header-tabs card-header-warning">
+                        <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                        <span class="nav-tabs-title">Tasks:</span>
+                        <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                        <a class="nav-link active" href="#profile" data-toggle="tab">
+                        <i class="material-icons">bug_report</i> Bugs
+                        <div class="ripple-container"></div>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#messages" data-toggle="tab">
+                        <i class="material-icons">code</i> Website
+                        <div class="ripple-container"></div>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="#settings" data-toggle="tab">
+                        <i class="material-icons">cloud</i> Server
+                        <div class="ripple-container"></div>
+                        </a>
+                        </li>
+                        </ul>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="card-body">
+                        <div class="tab-content">
+                        <div class="tab-pane active" id="profile">
+                        <table class="table">
+                        <tbody>
+                        <tr>
+                        <td>
+                        <div class="form-check">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                        <span class="check"></span>
+                        </span>
+                        </label>
+                        </div>
+                        </td>
+                        <td>Sign contract for "What are conference organizers afraid of?"</td>
+                        <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                        </button>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                        <div class="form-check">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <span class="form-check-sign">
+                        <span class="check"></span>
+                        </span>
+                        </label>
+                        </div>
+                        </td>
+                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                        <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                        </button>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                        <div class="form-check">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <span class="form-check-sign">
+                        <span class="check"></span>
+                        </span>
+                        </label>
+                        </div>
+                        </td>
+                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                        </td>
+                        <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                        </button>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                        <div class="form-check">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                        <span class="check"></span>
+                        </span>
+                        </label>
+                        </div>
+                        </td>
+                        <td>Create 4 Invisible User Experiences you Never Knew About</td>
+                        <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                        </button>
+                        </td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        </div>
+                        <div class="tab-pane" id="messages">
+                        <table class="table">
+                        <tbody>
+                        <tr>
+                        <td>
+                        <div class="form-check">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                        <span class="check"></span>
+                        </span>
+                        </label>
+                        </div>
+                        </td>
+                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                        </td>
+                        <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                        </button>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                        <div class="form-check">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <span class="form-check-sign">
+                        <span class="check"></span>
+                        </span>
+                        </label>
+                        </div>
+                        </td>
+                        <td>Sign contract for "What are conference organizers afraid of?"</td>
+                        <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                        </button>
+                        </td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        </div>
+                        <div class="tab-pane" id="settings">
+                        <table class="table">
+                        <tbody>
+                        <tr>
+                        <td>
+                        <div class="form-check">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <span class="form-check-sign">
+                        <span class="check"></span>
+                        </span>
+                        </label>
+                        </div>
+                        </td>
+                        <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                        <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                        </button>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                        <div class="form-check">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                        <span class="check"></span>
+                        </span>
+                        </label>
+                        </div>
+                        </td>
+                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                        </td>
+                        <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                        </button>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                        <div class="form-check">
+                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                        <span class="check"></span>
+                        </span>
+                        </label>
+                        </div>
+                        </td>
+                        <td>Sign contract for "What are conference organizers afraid of?"</td>
+                        <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-white btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                        </button>
+                        </td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>*@
+                </div>
+            </div>
+        }
+        @*      <footer class="footer">
+            <div class="container-fluid">
+            <nav class="float-left">
+            <ul>
+            <li>
+            <a href="https://www.creative-tim.com">
+            About
+            </a>
+            </li>
+            </ul>
+            </nav>
+            <div class="copyright float-right" id="date">
+            created by Hakuryuu
+            </div>
+            </div>
+            </footer>*@
+    </div>
+</div>
+
+@code {
+    private string PlayerName;
+    private const string SERVER = "EU";
+    private bool PlayerQueried = false;
+    Player PlayerStats = new Player();
+
+    private async Task QueryPlayer()
+    {
+        PlayerStats = Get.PlayerStats(PlayerName);
+        PlayerQueried = true;
+    }
+
+}
