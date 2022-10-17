@@ -1,0 +1,15 @@
+﻿@model WowStats.Common.Models.User.WarshipsUser
+
+<div class="user-info-entry">
+    @if (Model != null){
+        <div>
+            Nickname: @Model.Nickname
+        </div>
+        <div>
+            Account Number: @Model.AccountId
+        </div>
+    }
+    else{
+        <div>Model was null.</div>
+    }
+</div>

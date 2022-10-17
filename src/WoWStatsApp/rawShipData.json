@@ -1,0 +1,255 @@
+{
+  "status": "ok",
+  "meta": {
+    "count": 1,
+    "page_total": 1,
+    "total": 1,
+    "limit": 100,
+    "page": 1
+  },
+  "data": {
+    "4258182864": {
+      "description": "Designed as part of the program to create a \"high-speed fleet\" using the latest technology of the time. The first in Japan, and one of the first light cruisers in the world, to be equipped with turbine-driven propulsion. The ship carried decent armament and had a high top speed for her time.",
+      "price_gold": 0,
+      "ship_id_str": "PJSC035",
+      "has_demo_profile": false,
+      "images": {
+        "small": "https:\/\/glossary-wows-global.gcdn.co\/icons\/\/vehicle\/small\/PJSC035_3e13e5aee5d304ac0bcaf453e1b383a9321f0dab690f44894f5cd50735bce28d.png",
+        "large": "https:\/\/glossary-wows-global.gcdn.co\/icons\/\/vehicle\/large\/PJSC035_bf4e914ccc105c83c18c92d0408165246e024cdbed65c308b1867db164f62c50.png",
+        "medium": "https:\/\/glossary-wows-global.gcdn.co\/icons\/\/vehicle\/medium\/PJSC035_f20002402cec20e90e260a45979e1a90844f5e1f96a1d8ac6bf7007eb11f7f92.png",
+        "contour": "https:\/\/glossary-wows-global.gcdn.co\/icons\/\/vehicle\/contour\/PJSC035_14bb066e00b287c7b8cf82a91a38e64ad3cf0887eca79656e228fa302dd7c2a2.png"
+      },
+      "modules": {
+        "engine": [ 4178423504 ],
+        "torpedo_bomber": [],
+        "fighter": [],
+        "hull": [ 4178325200, 4177276624 ],
+        "artillery": [ 4178554576 ],
+        "torpedoes": [],
+        "fire_control": [ 4167478992, 4166430416 ],
+        "flight_control": [],
+        "dive_bomber": []
+      },
+      "modules_tree": {
+        "4167478992": {
+          "name": "Type2 mod. 1",
+          "next_modules": [ 4166430416 ],
+          "is_default": true,
+          "price_xp": 0,
+          "price_credit": 4500,
+          "next_ships": null,
+          "module_id": 4167478992,
+          "type": "Suo",
+          "module_id_str": "PJUS121"
+        },
+        "4166430416": {
+          "name": "Type2 mod. 2",
+          "next_modules": null,
+          "is_default": false,
+          "price_xp": 270,
+          "price_credit": 18000,
+          "next_ships": [ 4292753104 ],
+          "module_id": 4166430416,
+          "type": "Suo",
+          "module_id_str": "PJUS122"
+        },
+        "4178325200": {
+          "name": "Chikuma (A)",
+          "next_modules": [ 4177276624 ],
+          "is_default": true,
+          "price_xp": 0,
+          "price_credit": 10000,
+          "next_ships": null,
+          "module_id": 4178325200,
+          "type": "Hull",
+          "module_id_str": "PJUH111"
+        },
+        "4178423504": {
+          "name": "Propulsion: 22,500 hp",
+          "next_modules": null,
+          "is_default": true,
+          "price_xp": 0,
+          "price_credit": 5000,
+          "next_ships": null,
+          "module_id": 4178423504,
+          "type": "Engine",
+          "module_id_str": "PJUE111"
+        },
+        "4177276624": {
+          "name": "Chikuma (B)",
+          "next_modules": null,
+          "is_default": false,
+          "price_xp": 650,
+          "price_credit": 42000,
+          "next_ships": [ 4279154384 ],
+          "module_id": 4177276624,
+          "type": "Hull",
+          "module_id_str": "PJUH112"
+        },
+        "4178554576": {
+          "name": "152 mm\/45 41st Year Type on a single mount",
+          "next_modules": null,
+          "is_default": true,
+          "price_xp": 0,
+          "price_credit": 7500,
+          "next_ships": null,
+          "module_id": 4178554576,
+          "type": "Artillery",
+          "module_id_str": "PJUA111"
+        }
+      },
+      "nation": "japan",
+      "is_premium": false,
+      "ship_id": 4258182864,
+      "price_credit": 69000,
+      "default_profile": {
+        "engine": {
+          "engine_id_str": "PJUE111",
+          "max_speed": 26.0,
+          "engine_id": 4178423504
+        },
+        "torpedo_bomber": null,
+        "anti_aircraft": {
+          "slots": {
+            "0": {
+              "distance": -1.0,
+              "avg_damage": 2,
+              "caliber": 6,
+              "name": "6.5 mm\/115 3rd Year Type on a single mount",
+              "guns": 2
+            }
+          },
+          "defense": 5
+        },
+        "mobility": {
+          "rudder_time": 5.0,
+          "total": 45,
+          "turning_radius": 530,
+          "max_speed": 26.0
+        },
+        "hull": {
+          "hull_id": 4178325200,
+          "hull_id_str": "PJUH111",
+          "torpedoes_barrels": 0,
+          "anti_aircraft_barrels": 2,
+          "range": {
+            "max": 102,
+            "min": 6
+          },
+          "health": 17300,
+          "planes_amount": null,
+          "artillery_barrels": 4,
+          "atba_barrels": 4
+        },
+        "atbas": {
+          "distance": 3.2,
+          "slots": {
+            "0": {
+              "burn_probability": 5.0,
+              "bullet_speed": 680,
+              "name": "76 mm HE Mk2",
+              "shot_delay": 5.0,
+              "damage": 1300,
+              "bullet_mass": 6,
+              "type": "HE",
+              "gun_rate": 12.0
+            }
+          }
+        },
+        "artillery": {
+          "max_dispersion": 85,
+          "shells": {
+            "AP": {
+              "burn_probability": null,
+              "bullet_speed": 825,
+              "name": "152 mm AP Type4",
+              "damage": 2900,
+              "bullet_mass": 45,
+              "type": "AP"
+            },
+            "HE": {
+              "burn_probability": 9.0,
+              "bullet_speed": 825,
+              "name": "152 mm HE Type4",
+              "damage": 2500,
+              "bullet_mass": 45,
+              "type": "HE"
+            }
+          },
+          "shot_delay": 11.0,
+          "rotation_time": 20.0,
+          "distance": 9.3,
+          "artillery_id": 4178554576,
+          "artillery_id_str": "PJUA111",
+          "slots": {
+            "0": {
+              "barrels": 1,
+              "name": "152 mm\/45 41st Year Type on a single mount",
+              "guns": 4
+            }
+          },
+          "gun_rate": 5.2
+        },
+        "torpedoes": null,
+        "fighters": null,
+        "fire_control": {
+          "fire_control_id": 4167478992,
+          "distance": 9.3,
+          "distance_increase": 0,
+          "fire_control_id_str": "PJUS121"
+        },
+        "weaponry": {
+          "anti_aircraft": 5,
+          "aircraft": 0,
+          "artillery": 27,
+          "torpedoes": 0
+        },
+        "battle_level_range_max": 3,
+        "battle_level_range_min": 2,
+        "flight_control": null,
+        "concealment": {
+          "total": 79,
+          "detect_distance_by_plane": 4.2,
+          "detect_distance_by_ship": 8.9
+        },
+        "armour": {
+          "casemate": {
+            "max": -1,
+            "min": -1
+          },
+          "flood_prob": 0,
+          "deck": {
+            "max": -1,
+            "min": -1
+          },
+          "flood_damage": 0,
+          "range": {
+            "max": 102,
+            "min": 6
+          },
+          "health": 17300,
+          "extremities": {
+            "max": -1,
+            "min": -1
+          },
+          "total": 19,
+          "citadel": {
+            "max": -1,
+            "min": -1
+          }
+        },
+        "dive_bomber": null
+      },
+      "upgrades": [ 4261597104, 4262645680, 4260548528 ],
+      "tier": 2,
+      "next_ships": {
+        "4292753104": 720,
+        "4279154384": 1900
+      },
+      "mod_slots": 1,
+      "type": "Cruiser",
+      "is_special": false,
+      "name": "Chikuma"
+    }
+  }
+}
